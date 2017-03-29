@@ -2,17 +2,28 @@
 <html>
 
 <head>
-    <title>To-do list</title>
+    <title>VueJS to-do list</title>
 </head>
 
-<body>
+<body style="text-align: center;">
 
     <div id="app">
-        {{ message }}
+        
+        <h2>{{title}}</h2>
+
+        <li type="1" v-for="item in list">
+            {{ item.text }}
+        </li>
+
+        <br>
+        <input type="text" v-model="model.text" placeholder="Your new to-do" />
+        <br><br>
+        <button v-on:click="add()">Add</button>
+
     </div>
 
-    <script src="node_modules/dist/vue.js" />
-    <script src="js/app.js" />
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
