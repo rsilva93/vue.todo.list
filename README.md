@@ -1,2 +1,2 @@
-# vue.todo.list
-Some simple VueJS todo list
+# VueJS to-do list
+Some simple VueJS to-do list.
