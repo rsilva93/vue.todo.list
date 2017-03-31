@@ -8,21 +8,36 @@
 <body style="text-align: center;">
 
     <div id="app">
-        
+
         <h2>{{title}}</h2>
 
-        <li type="1" v-for="(item, index) in list">
-            {{ item.text }}
-            <a href="#" v-on:click="remove(index)">(Remover)</a>
+        <li type="none" v-for="(item, index) in list" v-if="!item.done">
+            <label>
+                <input type="checkbox" v-model="item.done">
+                    {{ item.text }}
+                </input>
+            </label>
+            <a v-on:click="remove(index)"><img style="height: 15px; cursor: pointer;" src="img/trash.png" title="Remove" /></a>
+        </li>
+
+        <li type="none" v-for="(item, index) in list" v-if="item.done">
+            <label>
+                <input type="checkbox" v-model="item.done">
+                    <s>{{ item.text }}</s>
+                </input>
+            </label>
+            <a v-on:click="remove(index)"><img style="height: 15px; cursor: pointer;" src="img/trash.png" title="Remove" /></a>
         </li>
 
         <br>
-        {{message}}
+        <span>{{message}}</span>
         <br>
-        
-        <input type="text" v-model="model.text" placeholder="Your new to-do" />
-        <br><br>
-        <button v-on:click="add()">Add</button>
+
+        <form v-on:submit="add">
+            <input type="text" v-model="model.text" autofocus required />
+            <br>
+            <span>Press enter to submit</span>
+        </form>
 
     </div>
 

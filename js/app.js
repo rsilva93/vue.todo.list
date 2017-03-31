@@ -9,30 +9,29 @@ var app = new Vue({
         message: null,
 
         model: {
-            text: ''
+            text: '',
+            done: false
         },
 
         list: [
-            { text: 'Go to work' },
-            { text: 'Code all day' },
-            { text: 'Rocks' },
+            { text: 'Go to work', done: true },
+            { text: 'Code all day', done: false },
+            { text: 'Rocks', done: false }
         ]
     },
 
     methods: {
-        add: function () {
+        add: function (event) {
 
-            if (!this.model || !this.model.text || !this.model.text.trim()) {
-                this.message = 'Fill the "Your new to-do" field.';
-                return;
-            }
-
+            event.preventDefault();
+            
             this.message = null;
 
             this.list.push(this.model);
 
             this.model = {
-                text: ''
+                text: '',
+                done: false
             };
         },
 
